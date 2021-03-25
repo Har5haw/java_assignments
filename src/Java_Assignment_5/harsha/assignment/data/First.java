@@ -5,12 +5,13 @@ public class First {
     char second;
 
     public void print(){
-        System.out.println(first+" "+second);
+        System.out.println(first);
+        System.out.println(second);
     }
 
     public void anotherMethod(){
         int a;
         int b;
-        //System.out.println(a+" "+b);
+        System.out.println(a+" "+b);
     }
 }
