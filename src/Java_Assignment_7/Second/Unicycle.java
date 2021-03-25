@@ -1,4 +1,4 @@
-package Java_Assignment_7.second;
+package Java_Assignment_7.Second;
 
 public class Unicycle extends Cycle{
     public void balance(){

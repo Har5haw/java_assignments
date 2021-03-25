@@ -1,4 +1,4 @@
-package Java_Assignment_7.second;
+package Java_Assignment_7.Second;
 
 public class DriverClass {
     public static void main(String[] args) {
