@@ -4,7 +4,7 @@ public class Slist {
     Slist next;
     int data;
 
-    public SlistIterator getIterator(){
+    public static SlistIterator getIterator(){
         return new SlistIterator();
     }
 }

@@ -2,8 +2,7 @@ package Java_Assignment_10;
 
 public class DriverClass {
     public static void main(String[] args) throws Exception {
-        Slist slist = new Slist();
-        SlistIterator slistIterator = slist.getIterator();
+        SlistIterator slistIterator = Slist.getIterator();
         slistIterator.add(1);
         slistIterator.add(2);
         slistIterator.add(3);
