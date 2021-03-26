@@ -1,8 +1,6 @@
 package Java_Assignment_12;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.DoubleStream;
 
 public class DriverClass {
     public static void main(String[] args) {
@@ -25,56 +23,58 @@ public class DriverClass {
         students.add(new Student(266, "Sanvi Pandey", 17, "Female", "Electric", 2019, 72.4));
         students.add(new Student(277, "Anuj Chettiar", 18, "Male", "Computer Science", 2017, 57.5));
 
-        System.out.println("-----Print the name of all departments in the college?---------");
-        Set<String> departments = students.stream().map(p -> p.getEngDepartment()).collect(Collectors.toSet());
-        for(String str : departments){
-            System.out.println(str);
-        }
+        StudentStream studentStream = new StudentStream(students);
 
-        System.out.println("-------Get the names of all students who have enrolled after 2018?--------");
-        List<String> names = students.stream().filter(p -> p.getYear_of_enrollment() > 2018).map(p -> p.getName()).collect(Collectors.toList());
-        for (String name : names){
-            System.out.println(name);
-        }
+        System.out.println("------------------Print the name of all departments in the college?----------------------");
+        PrintStudents.printAllDepartments(students);
+
+
+        System.out.println("----------------Get the names of all students who have enrolled after 2018?--------------");
+        List<String> names = studentStream.getNamesEnrolledAfterYear(2018);
+        System.out.println(names);
 
 
         System.out.println("--------Get the details of all male student in the computer sci department?--------------");
-        List<Student> maleStudents = students.stream().filter(p -> p.getGender().equals("Male")).collect(Collectors.toList());
-        for (Student student : maleStudents){
-            System.out.println(student.getName());
-        }
-
-        System.out.println("-------How many male and female student are there ? -----------------");
-        Map<String, List<Student> > map =  students.stream().collect(Collectors.groupingBy(p -> p.getGender()));
-        System.out.println("Male: "+map.get("Male").size());
-        System.out.println("Female: "+map.get("Female").size());
-
-        System.out.println("---------What is the average age of male and female students?-----------------");
+        List<Student> maleStudents = studentStream.getAllMaleInDepartment("Computer Science");
+        System.out.println(maleStudents);
 
 
-        System.out.println("-----------Get the details of highest student having highest percentage ?--------------");
-        Optional<Student> highest = students.stream().collect(Collectors.maxBy(Comparator.comparingDouble(Student::getPerTillDate)));
-        List<Student> highest1 = highest.stream().collect(Collectors.toList());
-        for (Student str : highest1){
-            System.out.println(str.getName()+" ---> "+str.getPerTillDate());
-        }
+        System.out.println("------------------How many male and female student are there ? --------------------------");
+        Map<String, Integer> countAllGender = studentStream.getCountAllGender();
+        System.out.println("Male: " + countAllGender.get("Male") +"\n" + "Female: " + countAllGender.get("Female"));
 
 
-        System.out.println("------------Count the number of students in each department?--------------------");
-        Map<String, List<Student>> groupDepartment = students.stream().collect(Collectors.groupingBy(p -> p.getEngDepartment()));
-        for (String dept : groupDepartment.keySet()){
-            System.out.println(dept+" "+groupDepartment.get(dept).size());
+        System.out.println("-------------------What is the average age of male and female students?------------------");
+        Double averageMaleAge = studentStream.getAverageAgeOfGender("Male");
+        Double averageFemaleAge = studentStream.getAverageAgeOfGender("Female");
+        System.out.println("Average age of male: "+averageMaleAge+"\n"+"Average age of female: "+averageFemaleAge);
+
+
+        System.out.println("-----------Get the details of highest student having highest percentage ?----------------");
+        Optional<Student> highest = studentStream.getStudentOfHighPercentage();
+        if(highest.isPresent()){
+            Student str = highest.get();
+            System.out.println(str.getName() + " ---> " + str.getPerTillDate());
         }
 
 
-        System.out.println("------------Get the details of youngest male student in the Electronic department?----------");
-        Optional<Student> highestAge = students.stream().filter(p -> p.getEngDepartment().equals("Electronic")).collect(Collectors.minBy(Comparator.comparingInt(Student::getAge)));
-        List<Student> highest1Age = highestAge.stream().collect(Collectors.toList());
-        for (Student str : highest1Age){
-            System.out.println(str.getName()+" ---> "+str.getAge());
+        System.out.println("-----------------Count the number of students in each department?------------------------");
+        Map<String, Integer> countStudentsInDept = studentStream.getCountStudentsInDepartment();
+        for (String dept : countStudentsInDept.keySet()) {
+            System.out.println(dept + " " + countStudentsInDept.get(dept));
         }
 
 
+        System.out.println("---------Get the details of youngest male student in the Electronic department?----------");
+        Optional<Student> highestAge = studentStream.getYoungMaleInDepartment("Electronic");
+        if (highestAge.isPresent()){
+            Student str1 = highestAge.get();
+            System.out.println(str1.getName() + " ---> " + str1.getAge());
+        }
 
+
+        System.out.println("-----How many male and female students are there in the computer science department?-an----");
+        Map<String, Integer> countGender = studentStream.getCountGenderInDepartment("Computer Science");
+        System.out.println("Male: " + countGender.get("Male")+"\n"+"Female: " + countGender.get("Female"));
     }
 }

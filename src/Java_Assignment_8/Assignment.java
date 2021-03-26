@@ -6,7 +6,7 @@ public class Assignment {
         ThrowingClass throwingClass = new ThrowingClass();
         try{
             throwingClass.pleaseThrowAll();
-        }catch (ExceptionOne | ExceptionTwo | ExceptionThree exception){
+        }catch (Exception exception){
             exception.printStackTrace();
         }finally {
             System.out.println("This is finally");
