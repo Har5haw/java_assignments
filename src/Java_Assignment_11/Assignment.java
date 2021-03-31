@@ -8,7 +8,8 @@ import java.util.Scanner;
 
 public class Assignment {
     public static void main(String[] args) throws IOException {
-        File file =  new File("test1.txt");
+        String fileName = args[0];
+        File file =  new File(fileName);
         Scanner sc = new Scanner(file);
         HashMap<Character, Integer> frequency = new HashMap<>();
         while (sc.hasNextLine()){
@@ -25,13 +26,12 @@ public class Assignment {
         newFile.createNewFile();
         FileWriter fileWriter = new FileWriter(newFile);
         for (Character character : frequency.keySet()){
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("Character: ");
-            stringBuilder.append(character);
-            stringBuilder.append(" repeated  --------->   ");
-            stringBuilder.append(frequency.get(character));
-            stringBuilder.append("\n");
-            fileWriter.write(stringBuilder.toString());
+            String stringBuilder = "Character: " +
+                    character +
+                    " repeated  --------->   " +
+                    frequency.get(character) +
+                    "\n";
+            fileWriter.write(stringBuilder);
         }
         fileWriter.close();
     }
