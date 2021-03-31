@@ -26,7 +26,7 @@ public class DriverClass {
         StudentStream studentStream = new StudentStream(students);
 
         System.out.println("------------------Print the name of all departments in the college?----------------------");
-        studentStream.printAllDepartments();
+        PrintStudents.printAllDepartments(students);
 
 
         System.out.println("----------------Get the names of all students who have enrolled after 2018?--------------");
