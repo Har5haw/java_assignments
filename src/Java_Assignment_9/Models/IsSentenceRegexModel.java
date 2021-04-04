@@ -6,7 +6,7 @@ public class IsSentenceRegexModel {
 
     public IsSentenceRegexModel(String input) {
         this.input = input;
-        this.regex = "^[A-Z][A-Z,a-z,\\W*]*[^\\W]\\.$";
+        this.regex = "^[A-Z].*\\.$";
     }
 
     public String getInput() {
