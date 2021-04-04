@@ -23,13 +23,9 @@ public class AssignmentMain {
         }
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-uuuu");
-
-        /**
-         * 
-         */
         List<DatesModel> datesModelList = new ArrayList<>();
-        for (String inputLine : input){
 
+        for (String inputLine : input){
             LocalDate currDateLocal = LocalDate.parse(inputLine.split(" ")[1] , dateTimeFormatter);
             LocalDate signupDate = LocalDate.parse(inputLine.split(" ")[0] , dateTimeFormatter);
             DatesModel datesModel = new DatesModel(signupDate, currDateLocal);
