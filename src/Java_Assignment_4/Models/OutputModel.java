@@ -3,8 +3,8 @@ package Java_Assignment_4.Models;
 import java.time.LocalDate;
 
 public class OutputModel {
-    LocalDate startDate;
-    LocalDate endDate;
+    private final LocalDate startDate;
+    private final LocalDate endDate;
 
     public OutputModel(LocalDate startDate, LocalDate endDate) {
         this.startDate = startDate;
@@ -15,15 +15,8 @@ public class OutputModel {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
     public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
 }

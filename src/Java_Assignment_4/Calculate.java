@@ -5,7 +5,6 @@ import Java_Assignment_4.Models.DatesModel;
 import Java_Assignment_4.Models.OutputModel;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,14 +12,6 @@ public class Calculate implements CalculateInterface {
     List<DatesModel> datesModelList;
 
     public Calculate(List<DatesModel> datesModelList) {
-        this.datesModelList = datesModelList;
-    }
-
-    public List<DatesModel> getDatesModelList() {
-        return datesModelList;
-    }
-
-    public void setDatesModelList(List<DatesModel> datesModelList) {
         this.datesModelList = datesModelList;
     }
 
