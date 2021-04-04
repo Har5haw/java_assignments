@@ -1,29 +1,37 @@
 package Java_Assignment_3;
 
+import Java_Assignment_3.Interfaces.PingAHostInterface;
+import Java_Assignment_3.Models.Host;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
 
-public class Assignment {
-    public static void main(String args[]) throws IOException, InterruptedException {
-        String inputLine;
+public class PingAHost implements PingAHostInterface {
+
+    Host host;
+
+    public PingAHost(Host host) {
+        this.host = host;
+    }
+
+    public Host getHost() {
+        return host;
+    }
+
+    public void setHost(Host host) {
+        this.host = host;
+    }
+
+    @Override
+    public double getMedian(int numOfPings) throws IOException, InterruptedException {
+        ArrayList<Double> timeList = new ArrayList<>();
         Process process;
-        int numberOfPings;
-
-        ArrayList<Double> timeList = new ArrayList<Double>();
-
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the host name to ping >>> ");
-        String host = sc.nextLine();
-
-        System.out.print("Enter number of pings to be made >>> ");
-        numberOfPings = sc.nextInt();
-
-        process = Runtime.getRuntime().exec("ping -c"+numberOfPings+" "+host);
+        process = Runtime.getRuntime().exec("ping -c"+numOfPings+" "+host.getHost());
         BufferedReader br = new BufferedReader (new InputStreamReader(process.getInputStream()));
+        String inputLine;
 
         while ((inputLine = br.readLine()) != null) {
             int index = inputLine.indexOf("time=");
@@ -50,9 +58,10 @@ public class Assignment {
                 median = timeList.get(midIndex);
             }
 
-            System.out.println("median is : " + median + " ms");
+            return median;
+
         }else{
-            System.out.println("Something went wrong, please check the host");
+            return -1;
         }
     }
 }
