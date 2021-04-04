@@ -10,7 +10,7 @@ public class Assignment {
         String input = sc.nextLine();
         HashSet<Character> hashSet = new HashSet<Character>();
         for (int i = 0; i < input.length(); i++){
-            char ch = input.charAt(i);
+            char ch = Character.toLowerCase(input.charAt(i));
             if(Character.isAlphabetic(ch)) {
                 hashSet.add(ch);
             }
