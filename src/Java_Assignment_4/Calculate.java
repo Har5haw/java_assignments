@@ -34,7 +34,7 @@ public class Calculate implements CalculateInterface {
             LocalDate dateStart = dateMid.minusDays(30);
             LocalDate dateEnd = dateMid.plusDays(30);
 
-            if (dateStart.compareTo(currDateLocal) < 0){
+            if (dateStart.plusYears(1).compareTo(currDateLocal) < 0){
                 while (dateStart.plusYears(1).compareTo(currDateLocal) < 0) {
                     dateMid = dateMid.plusYears(1);
                     dateStart = dateMid.minusDays(30);
