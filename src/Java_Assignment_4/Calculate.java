@@ -8,9 +8,20 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Calculate.
+ */
 public class Calculate implements CalculateInterface {
+    /**
+     * The Dates model list.
+     */
     List<DatesModel> datesModelList;
 
+    /**
+     * Instantiates a new Calculate.
+     *
+     * @param datesModelList the dates model list from input
+     */
     public Calculate(List<DatesModel> datesModelList) {
         this.datesModelList = datesModelList;
     }
@@ -19,7 +30,6 @@ public class Calculate implements CalculateInterface {
     public List<OutputModel> getOutPut(){
         List<OutputModel> output = new ArrayList<>();
         for (DatesModel datesModel : datesModelList){
-
             LocalDate currDateLocal = datesModel.getCurrentDate();
             LocalDate dateMid = datesModel.getSignupDate();
             LocalDate dateStart = dateMid.minusDays(30);

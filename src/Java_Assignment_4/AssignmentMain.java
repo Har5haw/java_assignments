@@ -10,7 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * The type Assignment main.
+ */
 public class AssignmentMain {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws ParseException the parse exception
+     */
     public static void main(String[] args) throws ParseException {
         Scanner sc = new Scanner(System.in);
         ArrayList<String> input = new ArrayList<>();
